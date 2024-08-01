@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Lending Platform - Loan Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="loan-calculator">
+            <h2>Loan Calculator</h2>
+            <form id="loan-calculator-form">
+                <label for="loan-amount">Loan Amount:</label>
+                <input type="number" id="loan-amount" name="loan-amount" required><br><br>
+                <label for="loan-term">Loan Term:</label>
+                <select id="loan-term" name="loan-term" required>
+                    <option value="3 months">3 months</option>
+                    <option value="6 months">6 months</option>
+                    <option value="1 year">1 year</option>
+                    <option value="2 years">2 years</option>
+                </select><br><br>
+                <label for="interest-rate">Interest Rate (%):</label>
+                <input type="number" id="interest-rate" name="interest-rate" required><br><br>
+                <input type="submit" value="Calculate">
+            </form>
+            <div id="calculator-results">
+                <h3>Results:</h3>
+                <p id="monthly-payment"></p>
+                <p id="total-interest"></p>
+                <p id="total-amount"></p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Money Lending Platform</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
