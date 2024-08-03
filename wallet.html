@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wallet - TrustLoan</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #fdd35b, #f78ca0);
+            margin: 0;
+        }
+        nav {
+            width: 100%;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .nav-container .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #282c34;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links a {
+            color: #282c34;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #007bff;
+        }
+        .content-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .content-container h1 {
+            margin-top: 0;
+            text-align: center;
+        }
+        .balance {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .transaction-history {
+            margin-top: 20px;
+        }
+        .transaction-history table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .transaction-history th, .transaction-history td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        .transaction-history th {
+            background-color: #f8f8f8;
+        }
+        .clear-history {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .clear-history button {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .clear-history button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">TrustLoan</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="loan-calculator.html">Loan Calculator</a></li>
+                <li><a href="apply-for-loan.html">Apply for Loan</a></li>
+                <li><a href="contact-us.html">Contact</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="wallet.html">My Wallet</a></li>
+                <li><a href="transaction-history.html">Transaction History</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="content-container">
+        <h1>My Wallet</h1>
+        <div class="balance">
+            Current Balance: <span id="wallet-balance">$0.00</span>
+        </div>
+        <div class="transaction-history">
+            <h2>Transaction History</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                <tbody id="transaction-history-body">
+                    <!-- Transactions will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
+        <div class="clear-history">
+            <button id="clear-history-button">Clear Transaction History</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const walletBalance = document.getElementById('wallet-balance');
+            const transactionHistoryBody = document.getElementById('transaction-history-body');
+            const clearHistoryButton = document.getElementById('clear-history-button');
+            let balance = parseFloat(localStorage.getItem('walletBalance')) || 0;
+
+            walletBalance.textContent = `$${balance.toFixed(2)}`;
+
+            const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+            transactions.forEach(transaction => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${transaction.date}</td>
+                    <td>${transaction.description}</td>
+                    <td>${transaction.amount}</td>
+                    <td>${transaction.balance}</td>
+                `;
+                transactionHistoryBody.appendChild(row);
+            });
+
+            clearHistoryButton.addEventListener('click', () => {
+                localStorage.removeItem('transactions');
+                transactionHistoryBody.innerHTML = '<tr><td colspan="4">No transactions found.</td></tr>';
+            });
+        });
+    </script>
+</body>
+</html>

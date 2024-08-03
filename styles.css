@@ -1,151 +1,262 @@
-/* Global Styles */
-
-* {
-    box-sizing: border-box;
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+    background: linear-gradient(to right, #fdd35b, #f78ca0); /* Updated background gradient */
     color: #333;
-    background-color: #f9f9f9;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 1em;
-    text-align: center;
+h1, h2, h3 {
+    font-weight: bold;
+    color: #282c34;
+}
+
+p {
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Navigation */
+nav {
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: bold;
+    color: #282c34;
 }
 
 nav ul {
     list-style: none;
-    margin: 0;
     padding: 0;
+    margin: 0;
     display: flex;
-    justify-content: space-between;
 }
 
 nav li {
-    margin-right: 20px;
+    margin-left: 20px;
 }
 
 nav a {
-    color: #fff;
+    color: #282c34;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-main {
+nav a:hover {
+    color: #007bff;
+}
+
+/* Hero Section */
+.hero {
+    background-color: transparent; /* Make hero background transparent to blend with gradient */
+    padding: 80px 0;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    padding: 2em;
 }
 
-section {
-    background-color: #fff;
-    padding: 1em;
+.hero-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.hero-content h2 {
+    font-size: 36px;
+    color: #282c34;
     margin-bottom: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.hero-content p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn.primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn.secondary {
+    background-color: #eee;
+    color: #333;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image img {
+    width: 300px; /* Fixed width value */
+    height: 200%;
+}
+
+/* Features Section */
+.features {
+    background-color: transparent; /* Make features background transparent to blend with gradient */
+    padding: 80px 0;
+}
+
+.features h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.feature-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.feature-card {
+    background-color: #f8f8f8;
+    padding: 20px;
     border-radius: 10px;
+    text-align: center;
+    flex: 1 0 250px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-    margin-top: 0;
+.feature-card img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
 }
 
-label {
-    display: block;
-    margin-bottom: 10px;
+/* Testimonials Section */
+.testimonials {
+    background-color: transparent; /* Make testimonials background transparent to blend with gradient */
+    padding: 80px 0;
+    position: relative;
 }
 
-input[type="text"], input[type="email"], input[type="password"] {
+.testimonials h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.testimonial-slider {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.testimonial-card {
+    display: none;
     width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
-input[type="submit"] {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
+.testimonial-card.active {
+    display: block;
+}
+
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 10; /* Ensure the buttons are on top of other elements */
 }
 
-input[type="submit"]:hover {
-    background-color: #444;
+.prev-btn {
+    left: 10px;
 }
 
-button {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
+.next-btn {
+    right: 10px;
 }
 
-button:hover {
-    background-color: #444;
+.prev-btn:hover, .next-btn:hover {
+    background-color: #0056b3;
 }
 
+/* Footer */
 footer {
     background-color: #333;
     color: #fff;
-    padding: 1em;
-    text-align: center;
-    clear: both;
-}
-
-/* Register Page Styles */
-
-#register {
-    max-width: 400px;
-    margin: 40px auto;
-}
-
-#register-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#register-form input[type="text"], #register-form input[type="email"], #register-form input[type="password"] {
-    margin-bottom: 20px;
-}
-
-/* Login Page Styles */
-
-#login {
-    max-width: 400px;
-    margin: 40px auto;
-}
-
-#login-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#login-form input[type="email"], #login-form input[type="password"] {
-    margin-bottom: 20px;
-}
-
-/* Home Page Styles */
-
-#home {
-    max-width: 800px;
-    margin: 40px auto;
+    padding: 20px;
     text-align: center;
 }
 
-#apply-loan, #loan-calculator {
-    margin-top: 20px;
-    margin-bottom: 20px;
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero-image {
+        margin-top: 20px;
+    }
+
+    .feature-cards {
+        flex-direction: column;
+    }
+
+    .feature-card {
+        flex: 1 0 100%;
+    }
+
+    .testimonial-slider {
+        width: 95%;
+    }
+
+    .prev-btn, .next-btn {
+        top: initial;
+        bottom: 10px;
+        transform: translateY(0);
+        padding: 5px 10px;
+        font-size: 14px;
+    }
 }
+
