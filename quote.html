@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get a Quote - TrustLoan</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #fdd35b, #f78ca0);
+            margin: 0;
+        }
+        nav {
+            width: 100%;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .nav-container .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #282c34;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links a {
+            color: #282c34;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #007bff;
+        }
+        .content-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .content-container h1 {
+            margin-top: 0;
+            text-align: center;
+        }
+        .quote-container {
+            margin-top: 40px;
+            text-align: center;
+        }
+        .quote-container h3 {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">TrustLoan</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="loan-calculator.html">Loan Calculator</a></li>
+                <li><a href="apply-for-loan.html">Apply for Loan</a></li>
+                <li><a href="contact-us.html">Contact</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="content-container">
+        <h1>Get a Quote</h1>
+        <div class="quote-container">
+            <h3>Loan Amount: <span id="quote-loan-amount">$0.00</span></h3>
+            <h3>Interest Rate: <span id="quote-interest-rate">0%</span></h3>
+            <h3>Loan Term: <span id="quote-loan-term">0 years</span></h3>
+            <h3>Estimated Monthly Payment: <span id="quote-monthly-payment">$0.00</span></h3>
+            <h3>Total Cost: <span id="quote-total-cost">$0.00</span></h3>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const amount = urlParams.get('loanAmount');
+            const rate = urlParams.get('interestRate');
+            const term = urlParams.get('loanTerm');
+
+            if (amount && rate && term) {
+                const monthlyRate = (rate / 100) / 12;
+                const numberOfPayments = term * 12;
+                const monthlyPayment = (amount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
+                const totalCost = monthlyPayment * numberOfPayments;
+
+                document.getElementById('quote-loan-amount').textContent = `$${amount}`;
+                document.getElementById('quote-interest-rate').textContent = `${rate}%`;
+                document.getElementById('quote-loan-term').textContent = `${term} years`;
+                document.getElementById('quote-monthly-payment').textContent = `$${monthlyPayment.toFixed(2)}`;
+                document.getElementById('quote-total-cost').textContent = `$${totalCost.toFixed(2)}`;
+            }
+        });
+    </script>
+</body>
+</html>

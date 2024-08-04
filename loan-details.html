@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Details - TrustLoan</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #fdd35b, #f78ca0);
+            margin: 0;
+        }
+        nav {
+            width: 100%;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .nav-container .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #282c34;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links a {
+            color: #282c34;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #007bff;
+        }
+        .content-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .content-container h1 {
+            margin-top: 0;
+        }
+        .loan-summary {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .actions a {
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .actions a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">TrustLoan</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact-us.html">Contact</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="wallet.html">Wallet</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="content-container">
+        <h1>Loan Details</h1>
+        <div class="loan-summary" id="loan-summary">
+        </div>
+        <div class="actions">
+            <a href="#" id="download-agreement" download>Download Agreement</a>
+            <a href="loan-status.html">View Loan Status</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const loanIndex = urlParams.get('loanIndex');
+            const loans = JSON.parse(localStorage.getItem('loans')) || [];
+            const loanSummary = document.getElementById('loan-summary');
+            const downloadAgreement = document.getElementById('download-agreement');
+
+            console.log('loanIndex:', loanIndex);
+            console.log('loans:', loans);
+
+            if (loanIndex !== null && loanIndex >= 0 && loanIndex < loans.length) {
+                const loan = loans[loanIndex];
+                loanSummary.innerHTML = `
+                    <p><strong>Loan Amount:</strong> $${loan.loanAmount}</p>
+                    <p><strong>Interest Rate:</strong> ${loan.interestRate}%</p>
+                    <p><strong>Repayment Term:</strong> ${loan.loanTerm} years</p>
+                    <p><strong>Current Balance:</strong> $${loan.currentBalance}</p>
+                `;
+                downloadAgreement.href = `loan-agreement-${loanIndex}.pdf`;
+            } else {
+                loanSummary.innerHTML = '<p>No loan details available.</p>';
+            }
+        });
+    </script>
+</body>
+</html>
