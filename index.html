@@ -8,77 +8,54 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <h1>TrustLoan</h1>
-            </div>
-            <ul>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="about-us.html">About</a></li>
-                <li><a href="contact-us.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h2>Quick and Easy Way to Apply for Loans</h2>
-            <p>Welcome to TrustLoan, your trusted financial partner committed to revolutionizing the money lending industry. At TrustLoan, we are dedicated to modernizing the money lending process, making it easier, faster, and more secure for everyone involved.</p>
-            <div class="cta-buttons">
-                <button class="btn primary" onclick="location.href='login.html'">Get Started</button>
-                <button class="btn secondary" onclick="location.href='loan-calculator.html'">Use Loan Calculator</button>
-            </div>
-        </div>
-        <div class="hero-image">
-            <img src="trustloan_logo.png" alt="A person using a phone to apply for a loan">
-        </div>
-    </section>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-sm custom-navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/home.html">
+        <!-- <img src="trustloan_logo.png" alt="TRUSTLOAN Logo" style="width:50px;"> -->
+        TRUSTLOAN
+      </a>
+  
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/home.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/loanapplication.html">Application</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/loancalculator.html">Calculator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <section class="features">
-        <h2>Why Choose TrustLoan?</h2>
-        <div class="feature-cards">
-            <div class="feature-card">
-                <img src="fast approval.png" alt="Fast Approval Icon">
-                <h3>Fast Approval</h3>
-                <p>Get quick and efficient loan decisions.</p>
-            </div>
-            <div class="feature-card">
-                <img src="low interest rates.png" alt="Low Interest Icon">
-                <h3>Low Interest Rates</h3>
-                <p>Enjoy competitive rates on your loan.</p>
-            </div>
-            <div class="feature-card">
-                <img src="flexible loan.png" alt="Flexible Terms Icon">
-                <h3>Flexible Loan Terms</h3>
-                <p>Choose repayment options that suit your needs.</p>
-            </div>
-            <div class="feature-card">
-                <img src="secure and transparent.png" alt="Secure Process Icon">
-                <h3>Secure & Transparent</h3>
-                <p>Your information is safe with our secure platform.</p>
-            </div>
-        </div>
-    </section>
+<!-- Digital Wallet Header -->
+<div class="container text-center my-4">
+    <img src="trustloan_logo.png" alt="Digital Wallet Header" class="img-fluid digitalwallet-header wider-image">
+</div>
 
-    <section class="testimonials">
-        <h2>What Our Customers Say</h2>
-        <div class="testimonial-slider">
-            <div class="testimonial-card">
-                <p>"TrustLoan made the entire loan process so much easier. I got approved quickly and the customer service was excellent!"</p>
-                <p>- John Doe</p>
-            </div>
-            <div class="testimonial-card">
-                <p>"I was hesitant to apply for a loan online, but TrustLoan's secure platform put my mind at ease. I would definitely recommend them!"</p>
-                <p>- Jane Smith</p>
-            </div>
-        </div>
-        <button class="prev-btn" onclick="prevTestimonial()">&#10094;</button>
-        <button class="next-btn" onclick="nextTestimonial()">&#10095;</button>
-    </section>
+<!-- Paragraph -->
+<div class="container text-center my-4">
+  <h2>Quick and easy way to apply loans<br>
+  </h2>
+  <p>Welcome to TrustLoan, your trusted financial partner committed to revolutionizing the money lending industry. At TrustLoan, we are dedicated to modernizing the money lending process, making it easier, faster, and more secure for everyone involved.</p>
+</div>
 
-    <footer>
-        <p>&copy; 2024 TrustLoan. All rights reserved.</p>
-    </footer>
+<!-- Button -->
+<div class="container text-center my-4">
+  <a href="/login.html" class="btn btn-custom btn-rounded btn-get-started">Get Started...</a>
+</div>
+
+<!-- Bootstrap JS and dependencies (optional) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
